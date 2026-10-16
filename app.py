@@ -21,9 +21,9 @@ with st.form(key='arguments'):
     st.form_submit_button('Lets Predict')
 
 
-url = 'https://taxifare.lewagon.ai/predict'
+url = st.secrets['wagon_cab_api_url']
 
-if url == 'https://taxifare.lewagon.ai/predict':
+if url:
 
     params = dict(pickup_datetime=pickup_datetime,
                   pickup_longitude=pickup_longitude,
@@ -37,6 +37,6 @@ if url == 'https://taxifare.lewagon.ai/predict':
 
     prediction = response.json()
 
-    pred = prediction['fare']
+    pred = prediction['taxifare']
 
 st.header(f'{pred}')
